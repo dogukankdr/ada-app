@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../componentStyle/loginStyle.css";
 import { login } from "../firebase";
 import { useNavigate } from "react-router-dom";
 

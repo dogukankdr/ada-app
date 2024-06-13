@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, emailVerification } from "../firebase";
 import { logout as logoutHandle } from "../store/auth";
 import UpdateProfile from "../components/UpdateProfile";
-import "../componentStyle/profileStyle.css";
 
 function Profile() {
   const navigate = useNavigate();

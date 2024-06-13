@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "../componentStyle/mapStyle.css";
 
 function Maps() {
   let map;

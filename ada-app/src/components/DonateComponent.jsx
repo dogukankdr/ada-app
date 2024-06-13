@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../componentStyle/donateStyle.css";
 
 const DonateComponent = () => {
   

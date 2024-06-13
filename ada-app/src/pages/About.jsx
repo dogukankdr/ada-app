@@ -1,5 +1,3 @@
-import "../componentStyle/aboutStyle.css";
-
 const About = () => {
   
   return (

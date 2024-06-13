@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import '../componentStyle/newsStyle.css';
 
 const News = () => {
 

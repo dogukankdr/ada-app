@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../componentStyle/signinStyle.css";
 import { register } from "../firebase";
 
 const SigninComponent = () => {

@@ -3,9 +3,6 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import LoginComponent from "./LoginComponent";
 import SigninComponent from "./SigninComponent";
 import { useState } from "react";
-import "../componentStyle/loginStyle.css";
-import "../componentStyle/signinStyle.css";
-import "../componentStyle/profileStyle.css";
 import { useDispatch, useSelector } from "react-redux";
 import Profile from "../pages/Profile";
 
