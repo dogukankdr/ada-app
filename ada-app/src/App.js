@@ -13,10 +13,8 @@ import Profile from "./pages/Profile";
 import { Toaster } from "react-hot-toast";
 
 function App() {
-  const [name, setName] = useState("Bize Ulaşın");
-  const [age, setAge] = useState();
-
-
+  const [name] = useState("Bize Ulaşın");
+  const [age] = useState();
 
   return (
     <div className="App">
