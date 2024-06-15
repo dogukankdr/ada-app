@@ -1,9 +1,5 @@
 import DonateComponent from "../components/DonateComponent";
 
-const Donate = () => {
-  
-  return <DonateComponent />
-
-};
+const Donate = () => <DonateComponent />
 
 export default Donate;
