@@ -26,47 +26,48 @@ function Maps() {
   }, []);
 
   function initMap() {
-    const ankaraCoords = { lat: 39.9334, lng: 32.84 };
+    const hatayCoords = { lat: 36.5797, lng: 36.1706 };
     map = new window.google.maps.Map(document.getElementById("map"), {
-      zoom: 13,
-      center: ankaraCoords,
+      zoom: 14,
+      center: hatayCoords,
     });
 
     placesService = new window.google.maps.places.PlacesService(map);
 
-    const hospitalsButton = createButton(
-      '<i class="fa-solid fa-circle-h"></i>',
+    const hospitalsLogo = createLogo(
+      'assets/images/hastane-logo.png',
       toggleHospitalMarkers,
-      "hospital-button"
+      "hospital-logo"
     );
-    const pharmaciesButton = createButton(
-      '<i class="fas fa-prescription-bottle-alt"></i>',
+    const pharmaciesLogo = createLogo(
+      'assets/images/eczane-logo.png',
       togglePharmacyMarkers,
-      "pharmacies-button"
+      "pharmacy-logo"
     );
-    const gatheringAreasButton = createButton(
-      '<i class="fa-solid fa-tree-city"></i>',
+    const gatheringAreasLogo = createLogo(
+      'assets/images/toplanma-logo.png',
       toggleGatheringMarkers,
-      "gathering-areas-button"
+      "gathering-logo"
     );
 
-    const buttonContainer = document.createElement("div");
-    buttonContainer.classList.add("button-container");
-    buttonContainer.appendChild(hospitalsButton);
-    buttonContainer.appendChild(pharmaciesButton);
-    buttonContainer.appendChild(gatheringAreasButton);
+    const logoContainer = document.createElement("div");
+    logoContainer.classList.add("logo-container");
+    logoContainer.appendChild(hospitalsLogo);
+    logoContainer.appendChild(pharmaciesLogo);
+    logoContainer.appendChild(gatheringAreasLogo);
     map.controls[window.google.maps.ControlPosition.LEFT_BOTTOM].push(
-      buttonContainer
+      logoContainer
     );
   }
 
-  function createButton(html, onClick, className) {
-    const button = document.createElement("button");
-    button.innerHTML = html;
-    button.classList.add("map-button");
-    button.classList.add(className);
-    button.addEventListener("click", onClick);
-    return button;
+  function createLogo(src, onClick, className) {
+    const logo = document.createElement("img");
+    logo.src = src;
+    logo.classList.add("map-logo");
+    logo.classList.add(className);
+    logo.addEventListener("click", onClick);
+    logo.style.cursor = 'pointer';
+    return logo;
   }
 
   function toggleHospitalMarkers() {
@@ -95,8 +96,8 @@ function Maps() {
 
   function showHospitals() {
     const request = {
-      location: { lat: 39.9334, lng: 32.8597 },
-      radius: "20000",
+      location: { lat: 36.5797, lng: 36.1706 },
+      radius: "8000",
       type: "hospital",
     };
 
@@ -107,9 +108,13 @@ function Maps() {
             position: place.geometry.location,
             map: map,
             title: place.name,
+            icon: {
+              url: 'assets/images/hastane-logo.png',
+              scaledSize: new window.google.maps.Size(28, 28),
+            },
           });
 
-          let infowindow; 
+          let infowindow;
 
           marker.addListener("mouseover", function () {
             infowindow = new window.google.maps.InfoWindow({
@@ -119,7 +124,7 @@ function Maps() {
           });
 
           marker.addListener("mouseout", function () {
-            infowindow.close(); 
+            infowindow.close();
           });
 
           hospitalMarkers.push(marker);
@@ -132,9 +137,10 @@ function Maps() {
 
   function showPharmacies() {
     const request = {
-      location: { lat: 39.9334, lng: 32.8597 },
-      radius: "20000",
+      location: { lat: 36.5797, lng: 36.1706 },
+      radius: "8000",
       type: "pharmacy",
+      
     };
 
     placesService.nearbySearch(request, (results, status) => {
@@ -144,13 +150,17 @@ function Maps() {
             position: place.geometry.location,
             map: map,
             title: place.name,
+            icon: {
+              url: 'assets/images/eczane-logo.png',
+              scaledSize: new window.google.maps.Size(28, 28),
+            },
           });
 
-          let infowindow; 
+          let infowindow;
 
           marker.addListener("mouseover", function () {
             infowindow = new window.google.maps.InfoWindow({
-                content: `<div style="color: green;"><strong>${place.name}</strong><br>${place.vicinity}</div>`,
+              content: `<div style="color: black;"><strong>${place.name}</strong><br>${place.vicinity}</div>`,
             });
             infowindow.open(map, marker);
           });
@@ -169,8 +179,8 @@ function Maps() {
 
   function showGatheringAreas() {
     const request = {
-      location: { lat: 39.9334, lng: 32.8597 },
-      radius: "20000",
+      location: { lat: 36.5797, lng: 36.1706 },
+      radius: "10000",
       types: ["park", "school"],
     };
 
@@ -181,13 +191,17 @@ function Maps() {
             position: place.geometry.location,
             map: map,
             title: place.name,
+            icon: {
+              url: 'assets/images/toplanma-logo.png',
+              scaledSize: new window.google.maps.Size(28, 28),
+            },
           });
 
-          let infowindow; 
+          let infowindow;
 
           marker.addListener("mouseover", function () {
-            infowindow = new window.google.maps.InfoWindow({ 
-              content: `<div style="color: green;"><strong>${place.name}</strong><br>${place.vicinity || 'Adres bulunamadı'}</div>`,
+            infowindow = new window.google.maps.InfoWindow({
+              content: `<div style="color: black;"><strong>${place.name}</strong><br>${place.vicinity || 'Adres bulunamadı'}</div>`,
             });
             infowindow.open(map, marker);
           });

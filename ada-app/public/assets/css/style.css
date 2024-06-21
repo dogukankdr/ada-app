@@ -1295,60 +1295,6 @@ textarea#comment::placeholder {
 
 /* map section start */
 
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 1vw;
-    padding: 1% 3%;
-    border-radius: 5px;
-}
-
-.hospital-button {
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 60px;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 10px; 
-    transition: background-color 0.5s; 
-    background-color: #ff5757; 
-}
-
-.pharmacies-button {
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 60px; 
-    padding: 10px 29px; 
-    cursor: pointer;
-    border-radius: 10px; 
-    transition: background-color 0.5s;
-    background-color: #ff5757;
-}
-
-.gathering-areas-button {
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 60px;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: background-color 0.5s;
-    background-color: #ff5757;
-}
-
-.map-button:hover {
-    background-color: #922222;
-}
-
 .tooltip {
     position: absolute;
     background-color: #fff;
@@ -1359,6 +1305,22 @@ textarea#comment::placeholder {
     z-index: 1000;
 }
 
+.map-logo {
+  margin-left: 30px;
+  width: 90px;  
+  height: 90px; 
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.map-logo:not(:last-child) {
+  margin-right: 10px;  
+}
 
 /* map section end */
 
